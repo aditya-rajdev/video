@@ -1,0 +1,49 @@
+TITLE: Dengue: Kaise Pahchanen aur Kaise Rojakarein
+HOOK: Ek bhai apne chhoti sister ko dengu ke bare me bta rha hai!
+TONE: educational
+AUDIENCE: children under 18
+DURATION: 180s
+
+SCENE 1 — 20s
+NARRATION: Dengue ek jangli virus hai jo kuch dinon me badh sakta hai. Iske liye ek jangli kisna (mosquito) ka saamna karna padta hai.
+DIALOGUE:
+Ek Bhai: Sister, aaj main tumhe dengu ke bare me bata raha hu!
+VISUAL DIRECTION: A child (Ek Bhai) and his younger sister sitting on a bench. A mosquito flies nearby. On-screen text: 'Dengue: Kaise Pahchanen aur Kaise Rojakarein'
+ON-SCREEN TEXT: Dengue: Kaise Pahchanen aur Kaise Rojakarein
+
+SCENE 2 — 35s
+NARRATION: Dengu ke liye ek jangli kisna (Aedes aegypti) ka saamna karna padta hai. Yeh kisna pani ke tandon me jeechta hai aur dengue virus ko lene wale pani me se apne kisna ke liye pani leke chal jata hai.
+DIALOGUE:
+Ek Bhai: Dengu ke liye ek jangli kisna hai, jo pani ke tandon me jeechta hai.
+VISUAL DIRECTION: Close-up of a mosquito landing on a water container. Animation of mosquito biting a human. On-screen text: 'Dengu ke liye jangli kisna hai'
+ON-SCREEN TEXT: Dengu ke liye jangli kisna hai
+
+SCENE 3 — 30s
+NARRATION: Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai. Yeh kisna apne kisna ke liye pani leke chal jata hai.
+DIALOGUE:
+Ek Bhai: Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai.
+VISUAL DIRECTION: Animation of mosquito biting a human. Show symptoms like fever and headache. On-screen text: 'Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai'
+ON-SCREEN TEXT: Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai
+
+SCENE 4 — 45s
+NARRATION: Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai. Yeh kisna apne kisna ke liye pani leke chal jata hai.
+DIALOGUE:
+Ek Bhai: Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai.
+VISUAL DIRECTION: Show steps to prevent dengue: cleaning water containers, using repellent, wearing long clothes. On-screen text: 'Dengu rojakarein: pani khatam karo, repellent lagao, long clothes pakein'
+ON-SCREEN TEXT: Dengu rojakarein: pani khatam karo, repellent lagao, long clothes pakein
+
+SCENE 5 — 30s
+NARRATION: Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai. Yeh kisna apne kisna ke liye pani leke chal jata hai.
+DIALOGUE:
+Ek Bhai: Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai.
+VISUAL DIRECTION: Kids cleaning water containers and applying repellent. On-screen text: 'Dengu rojakarein: pani khatam karo, repellent lagao, long clothes pakein'
+ON-SCREEN TEXT: Dengu rojakarein: pani khatam karo, repellent lagao, long clothes pakein
+
+SCENE 6 — 20s
+NARRATION: Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai. Yeh kisna apne kisna ke liye pani leke chal jata hai.
+DIALOGUE:
+Ek Bhai: Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai.
+VISUAL DIRECTION: Kids smiling while cleaning water containers. On-screen text: 'Dengue ke baare me jankari leke apne samay me rojakarein'
+ON-SCREEN TEXT: Dengue ke baare me jankari leke apne samay me rojakarein
+
+CTA: Dengue ke baare me jankari leke apne samay me rojakarein!

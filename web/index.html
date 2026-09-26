@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FrameForge AI</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="app">
+<section class="hero">
+<div class="badge">AI VIDEO AGENT</div>
+<h1>Turn an idea into a<br><span>short-form video.</span></h1>
+<p>Write and review the script first. Only after you approve it will the video pipeline start.</p>
+</section>
+
+<section class="card">
+<div id="inputSection">
+<label for="topic">Video topic</label>
+<textarea id="topic" maxlength="1000" placeholder="Example: A brother explains dengue to his younger sister"></textarea>
+
+<div class="grid">
+<div><label for="duration">Duration (seconds)</label><input id="duration" type="number" min="5" max="1800" value="30"></div>
+<div><label for="tone">Tone</label><input id="tone" value="educational" placeholder="educational"></div>
+</div>
+
+<div class="grid">
+<div><label for="audience">Audience / language</label><input id="audience" value="General audience, simple English" placeholder="Children under 18, Hindi"></div>
+<div><label for="provider">AI provider</label>
+<select id="provider">
+<option value="local">Local Ollama</option>
+<option value="gemini">Google Gemini</option>
+<option value="openai">OpenAI</option>
+<option value="xai">Grok / xAI</option>
+<option value="custom">Custom OpenAI-compatible</option>
+</select></div>
+</div>
+
+<div class="grid">
+<div><label for="model">Model</label><input id="model" placeholder="Optional"></div>
+<div id="apiGroup"><label for="apiKey">API key</label><input id="apiKey" type="password" autocomplete="off" placeholder="Your provider API key"></div>
+</div>
+
+<div id="customGroup" class="hidden"><label for="baseUrl">Custom OpenAI-compatible base URL</label><input id="baseUrl" placeholder="https://example.com/v1"></div>
+<div id="codeModelGroup"><label for="codeModel">Code model (optional)</label><input id="codeModel" placeholder="Leave empty to use the selected model"></div>
+
+<button id="generateScriptBtn">Generate Script</button>
+</div>
+
+<section id="scriptPanel" class="script-panel hidden">
+<div class="section-heading"><div><span class="eyebrow">STEP 1</span><h2>Script Preview</h2></div><span id="scriptStatus" class="pill">DRAFT</span></div>
+<div id="scriptMeta" class="script-meta"></div>
+<div id="scriptContent"></div>
+
+<div id="editBox" class="edit-box hidden">
+<label for="editInstruction">What should be changed?</label>
+<textarea id="editInstruction" placeholder="Example: Make the explanation simpler for children and remove repeated information."></textarea>
+<div class="button-row"><button id="applyEditBtn">Apply Edit</button><button id="cancelEditBtn" class="secondary">Cancel</button></div>
+</div>
+
+<div class="button-row script-actions">
+<button id="editScriptBtn" class="secondary">Edit Script</button>
+<button id="regenerateScriptBtn" class="secondary">Regenerate</button>
+<button id="approveScriptBtn">Approve Script</button>
+<button id="cancelScriptBtn" class="danger">Cancel</button>
+</div>
+</section>
+
+<section id="videoDecisionPanel" class="decision hidden">
+<span class="eyebrow">STEP 2</span>
+<h2>Do you want to generate the video?</h2>
+<p>Your script is approved. The video pipeline will start only if you choose Yes.</p>
+<div class="button-row"><button id="generateVideoBtn">Yes, Generate Video</button><button id="saveScriptBtn" class="secondary">No, Save Script</button></div>
+</section>
+
+<div id="statusPanel" class="status hidden"><div class="statusTop"><span id="stage">Starting...</span><span id="progressText">0%</span></div><div class="progress"><div id="progressBar"></div></div><pre id="logs"></pre></div>
+
+<div id="resultPanel" class="result hidden"><h2>Video ready</h2><video id="video" controls playsinline></video><a id="downloadBtn" class="download" download="frameforge-video.mp4">Download MP4</a></div>
+<div id="errorPanel" class="error hidden"></div>
+</section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+{
+  "title": "Dengue: Kaise Pahchanen aur Kaise Rojakarein",
+  "hook": "Ek bhai apne chhoti sister ko dengu ke bare me bta rha hai!",
+  "tone": "educational",
+  "audience": "children under 18",
+  "total_duration": 180,
+  "scenes": [
+    {
+      "scene_id": 1,
+      "duration": 20,
+      "narration": "Dengue ek jangli virus hai jo kuch dinon me badh sakta hai. Iske liye ek jangli kisna (mosquito) ka saamna karna padta hai.",
+      "dialogues": [
+        {
+          "character": "Ek Bhai",
+          "line": "Sister, aaj main tumhe dengu ke bare me bata raha hu!"
+        }
+      ],
+      "visual_direction": "A child (Ek Bhai) and his younger sister sitting on a bench. A mosquito flies nearby. On-screen text: 'Dengue: Kaise Pahchanen aur Kaise Rojakarein'",
+      "on_screen_text": "Dengue: Kaise Pahchanen aur Kaise Rojakarein"
+    },
+    {
+      "scene_id": 2,
+      "duration": 35,
+      "narration": "Dengu ke liye ek jangli kisna (Aedes aegypti) ka saamna karna padta hai. Yeh kisna pani ke tandon me jeechta hai aur dengue virus ko lene wale pani me se apne kisna ke liye pani leke chal jata hai.",
+      "dialogues": [
+        {
+          "character": "Ek Bhai",
+          "line": "Dengu ke liye ek jangli kisna hai, jo pani ke tandon me jeechta hai."
+        }
+      ],
+      "visual_direction": "Close-up of a mosquito landing on a water container. Animation of mosquito biting a human. On-screen text: 'Dengu ke liye jangli kisna hai'",
+      "on_screen_text": "Dengu ke liye jangli kisna hai"
+    },
+    {
+      "scene_id": 3,
+      "duration": 30,
+      "narration": "Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai. Yeh kisna apne kisna ke liye pani leke chal jata hai.",
+      "dialogues": [
+        {
+          "character": "Ek Bhai",
+          "line": "Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai."
+        }
+      ],
+      "visual_direction": "Animation of mosquito biting a human. Show symptoms like fever and headache. On-screen text: 'Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai'",
+      "on_screen_text": "Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai"
+    },
+    {
+      "scene_id": 4,
+      "duration": 45,
+      "narration": "Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai. Yeh kisna apne kisna ke liye pani leke chal jata hai.",
+      "dialogues": [
+        {
+          "character": "Ek Bhai",
+          "line": "Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai."
+        }
+      ],
+      "visual_direction": "Show steps to prevent dengue: cleaning water containers, using repellent, wearing long clothes. On-screen text: 'Dengu rojakarein: pani khatam karo, repellent lagao, long clothes pakein'",
+      "on_screen_text": "Dengu rojakarein: pani khatam karo, repellent lagao, long clothes pakein"
+    },
+    {
+      "scene_id": 5,
+      "duration": 30,
+      "narration": "Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai. Yeh kisna apne kisna ke liye pani leke chal jata hai.",
+      "dialogues": [
+        {
+          "character": "Ek Bhai",
+          "line": "Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai."
+        }
+      ],
+      "visual_direction": "Kids cleaning water containers and applying repellent. On-screen text: 'Dengu rojakarein: pani khatam karo, repellent lagao, long clothes pakein'",
+      "on_screen_text": "Dengu rojakarein: pani khatam karo, repellent lagao, long clothes pakein"
+    },
+    {
+      "scene_id": 6,
+      "duration": 20,
+      "narration": "Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai. Yeh kisna apne kisna ke liye pani leke chal jata hai.",
+      "dialogues": [
+        {
+          "character": "Ek Bhai",
+          "line": "Dengu ke liye kuch dino ke baad pani me se apne kisna ke liye pani leke chal jata hai."
+        }
+      ],
+      "visual_direction": "Kids smiling while cleaning water containers. On-screen text: 'Dengue ke baare me jankari leke apne samay me rojakarein'",
+      "on_screen_text": "Dengue ke baare me jankari leke apne samay me rojakarein"
+    }
+  ],
+  "cta": "Dengue ke baare me jankari leke apne samay me rojakarein!"
+}

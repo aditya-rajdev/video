@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=1080,height=1920"
+>
+
+<title>AI Video</title>
+
+<style>
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 1080px;
+    height: 1920px;
+
+    overflow: hidden;
+
+    background: #000;
+}
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: white;
+}
+
+
+/* =========================================================
+   VIDEO
+   ========================================================= */
+
+#video {
+    position: relative;
+
+    width: 1080px;
+    height: 1920px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   SCENES
+   ========================================================= */
+
+.scene {
+    position: absolute;
+
+    inset: 0;
+
+    width: 1080px;
+    height: 1920px;
+
+    overflow: hidden;
+
+    visibility: hidden;
+
+    opacity: 0;
+
+    z-index: 0;
+}
+
+.scene.active {
+    visibility: visible;
+
+    opacity: 1;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.scene-content {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 100px;
+
+    text-align: center;
+
+    z-index: 50;
+}
+
+
+/* =========================================================
+   VISUAL TYPE
+   ========================================================= */
+
+.visual-type {
+    font-size: 48px;
+
+    font-weight: 800;
+
+    margin-bottom: 50px;
+
+    max-width: 850px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.visual-description {
+    font-size: 32px;
+
+    line-height: 1.4;
+
+    max-width: 850px;
+
+    opacity: 0.75;
+
+    margin-bottom: 50px;
+}
+
+
+/* =========================================================
+   EFFECT LABEL
+   ========================================================= */
+
+.effects-label {
+    position: absolute;
+
+    left: 80px;
+    right: 80px;
+
+    bottom: 80px;
+
+    font-size: 22px;
+
+    opacity: 0.35;
+}
+
+
+/* =========================================================
+   MAIN TEXT
+   ========================================================= */
+
+.scene-text {
+    max-width: 900px;
+
+    font-size: 62px;
+
+    line-height: 1.15;
+
+    font-weight: 900;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,0.2);
+
+    z-index: 100;
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.scene-image {
+    position: absolute;
+
+    width: 760px;
+
+    max-height: 1100px;
+
+    object-fit: contain;
+
+    left: 50%;
+    top: 48%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 20;
+}
+
+
+/* =========================================================
+   FADE
+   ========================================================= */
+
+.effect-fade {
+    animation:
+        fadeIn 0.8s ease-out both;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   TYPING
+   ========================================================= */
+
+.effect-typing {
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    width: 0;
+
+    border-right:
+        4px solid white;
+
+    animation:
+        typing 3s steps(35, end) forwards,
+        blinkCursor 0.7s step-end infinite;
+}
+
+@keyframes typing {
+
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blinkCursor {
+
+    50% {
+        border-color: transparent;
+    }
+}
+
+
+/* =========================================================
+   FLASH
+   ========================================================= */
+
+.effect-flash {
+    animation:
+        flashText 0.7s ease-in-out 3;
+}
+
+@keyframes flashText {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    25% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.25;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   PULSE
+   ========================================================= */
+
+.effect-pulse {
+    animation:
+        pulseText 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseText {
+
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.06);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+}
+
+
+/* =========================================================
+   ZOOM
+   ========================================================= */
+
+.effect-zoom {
+    animation:
+        zoomText 2s ease-out both;
+}
+
+@keyframes zoomText {
+
+    from {
+        transform: scale(0.4);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   SLIDE
+   ========================================================= */
+
+.effect-slide {
+    animation:
+        slideText 0.8s ease-out both;
+}
+
+@keyframes slideText {
+
+    from {
+        transform: translateX(200px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   RAIN
+   ========================================================= */
+
+.rain {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: 5;
+
+    opacity: 0.5;
+}
+
+.rain span {
+    position: absolute;
+
+    top: -150px;
+
+    width: 3px;
+
+    height: 100px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(180,210,255,0.8)
+        );
+
+    transform: rotate(15deg);
+
+    animation:
+        rainFall 0.8s linear infinite;
+}
+
+.rain span:nth-child(1)  { left: 3%;  animation-delay: 0s; }
+.rain span:nth-child(2)  { left: 8%;  animation-delay: .2s; }
+.rain span:nth-child(3)  { left: 13%; animation-delay: .4s; }
+.rain span:nth-child(4)  { left: 18%; animation-delay: .1s; }
+.rain span:nth-child(5)  { left: 23%; animation-delay: .5s; }
+.rain span:nth-child(6)  { left: 28%; animation-delay: .3s; }
+.rain span:nth-child(7)  { left: 33%; animation-delay: .7s; }
+.rain span:nth-child(8)  { left: 38%; animation-delay: .2s; }
+.rain span:nth-child(9)  { left: 43%; animation-delay: .6s; }
+.rain span:nth-child(10) { left: 48%; animation-delay: .1s; }
+.rain span:nth-child(11) { left: 53%; animation-delay: .4s; }
+.rain span:nth-child(12) { left: 58%; animation-delay: .8s; }
+.rain span:nth-child(13) { left: 63%; animation-delay: .3s; }
+.rain span:nth-child(14) { left: 68%; animation-delay: .6s; }
+.rain span:nth-child(15) { left: 73%; animation-delay: .2s; }
+.rain span:nth-child(16) { left: 78%; animation-delay: .5s; }
+.rain span:nth-child(17) { left: 83%; animation-delay: .1s; }
+.rain span:nth-child(18) { left: 88%; animation-delay: .7s; }
+.rain span:nth-child(19) { left: 93%; animation-delay: .4s; }
+.rain span:nth-child(20) { left: 97%; animation-delay: .8s; }
+.rain span:nth-child(21) { left: 15%; animation-delay: .9s; }
+.rain span:nth-child(22) { left: 45%; animation-delay: .7s; }
+.rain span:nth-child(23) { left: 70%; animation-delay: .9s; }
+.rain span:nth-child(24) { left: 90%; animation-delay: .3s; }
+.rain span:nth-child(25) { left: 55%; animation-delay: .5s; }
+
+@keyframes rainFall {
+
+    from {
+        transform:
+            translateY(0)
+            rotate(15deg);
+    }
+
+    to {
+        transform:
+            translateY(2200px)
+            rotate(15deg);
+    }
+}
+
+
+/* =========================================================
+   DUST
+   ========================================================= */
+
+.dust {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: 5;
+
+    opacity: 0.5;
+}
+
+.dust i {
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.4);
+
+    animation:
+        dustMove 5s linear infinite;
+}
+
+.dust i:nth-child(1)  { left: 10%; top: 80%; animation-delay: 0s; }
+.dust i:nth-child(2)  { left: 20%; top: 60%; animation-delay: .5s; }
+.dust i:nth-child(3)  { left: 30%; top: 90%; animation-delay: 1s; }
+.dust i:nth-child(4)  { left: 40%; top: 70%; animation-delay: 1.5s; }
+.dust i:nth-child(5)  { left: 50%; top: 85%; animation-delay: 2s; }
+.dust i:nth-child(6)  { left: 60%; top: 65%; animation-delay: .7s; }
+.dust i:nth-child(7)  { left: 70%; top: 75%; animation-delay: 1.2s; }
+.dust i:nth-child(8)  { left: 80%; top: 55%; animation-delay: 1.8s; }
+.dust i:nth-child(9)  { left: 90%; top: 82%; animation-delay: 2.4s; }
+.dust i:nth-child(10) { left: 15%; top: 45%; animation-delay: 2.8s; }
+.dust i:nth-child(11) { left: 25%; top: 50%; animation-delay: 3s; }
+.dust i:nth-child(12) { left: 35%; top: 40%; animation-delay: 3.5s; }
+.dust i:nth-child(13) { left: 45%; top: 35%; animation-delay: 4s; }
+.dust i:nth-child(14) { left: 55%; top: 45%; animation-delay: 4.5s; }
+.dust i:nth-child(15) { left: 65%; top: 30%; animation-delay: 2.5s; }
+.dust i:nth-child(16) { left: 75%; top: 40%; animation-delay: 1.5s; }
+.dust i:nth-child(17) { left: 85%; top: 35%; animation-delay: 2.2s; }
+.dust i:nth-child(18) { left: 95%; top: 50%; animation-delay: 3.2s; }
+.dust i:nth-child(19) { left: 5%; top: 30%; animation-delay: 3.8s; }
+.dust i:nth-child(20) { left: 50%; top: 20%; animation-delay: 4.2s; }
+
+@keyframes dustMove {
+
+    0% {
+        transform:
+            translateY(100px)
+            translateX(0);
+
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-500px)
+            translateX(80px);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   STARS
+   ========================================================= */
+
+.stars {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 5;
+}
+
+.stars i {
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: 0.7;
+
+    animation:
+        starMove 4s linear infinite;
+}
+
+.stars i:nth-child(1) { left: 5%; top: 10%; }
+.stars i:nth-child(2) { left: 15%; top: 20%; }
+.stars i:nth-child(3) { left: 25%; top: 8%; }
+.stars i:nth-child(4) { left: 35%; top: 30%; }
+.stars i:nth-child(5) { left: 45%; top: 15%; }
+.stars i:nth-child(6) { left: 55%; top: 25%; }
+.stars i:nth-child(7) { left: 65%; top: 7%; }
+.stars i:nth-child(8) { left: 75%; top: 35%; }
+.stars i:nth-child(9) { left: 85%; top: 18%; }
+.stars i:nth-child(10) { left: 95%; top: 28%; }
+.stars i:nth-child(11) { left: 10%; top: 45%; }
+.stars i:nth-child(12) { left: 30%; top: 55%; }
+.stars i:nth-child(13) { left: 50%; top: 48%; }
+.stars i:nth-child(14) { left: 70%; top: 58%; }
+.stars i:nth-child(15) { left: 90%; top: 50%; }
+.stars i:nth-child(16) { left: 20%; top: 70%; }
+.stars i:nth-child(17) { left: 40%; top: 80%; }
+.stars i:nth-child(18) { left: 60%; top: 72%; }
+.stars i:nth-child(19) { left: 80%; top: 82%; }
+.stars i:nth-child(20) { left: 95%; top: 75%; }
+.stars i:nth-child(21) { left: 5%; top: 90%; }
+.stars i:nth-child(22) { left: 25%; top: 92%; }
+.stars i:nth-child(23) { left: 50%; top: 90%; }
+.stars i:nth-child(24) { left: 75%; top: 95%; }
+.stars i:nth-child(25) { left: 90%; top: 88%; }
+.stars i:nth-child(26) { left: 12%; top: 32%; }
+.stars i:nth-child(27) { left: 38%; top: 65%; }
+.stars i:nth-child(28) { left: 62%; top: 38%; }
+.stars i:nth-child(29) { left: 82%; top: 62%; }
+.stars i:nth-child(30) { left: 48%; top: 5%; }
+
+@keyframes starMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(30px);
+    }
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.grid-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.04) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.04) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        80px 80px;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   FLICKER
+   ========================================================= */
+
+.flicker-light {
+
+    position: absolute;
+
+    width: 800px;
+    height: 800px;
+
+    left: 50%;
+    top: 45%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,220,150,0.18),
+            transparent 70%
+        );
+
+    animation:
+        flicker 1.8s infinite;
+
+    z-index: 4;
+}
+
+@keyframes flicker {
+
+    0% {
+        opacity: 0.3;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    30% {
+        opacity: 0.25;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    70% {
+        opacity: 0.35;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+
+/* =========================================================
+   CSS BOX
+   ========================================================= */
+
+.css-box {
+
+    position: absolute;
+
+    left: 50%;
+    top: 45%;
+
+    width: 420px;
+    height: 280px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.5);
+
+    z-index: 20;
+
+    animation:
+        boxReveal 1.5s ease-out forwards;
+}
+
+.box-body {
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 420px;
+    height: 210px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5c3820,
+            #2c160c
+        );
+
+    border:
+        6px solid #8a5a32;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.6);
+}
+
+.box-lid {
+
+    position: absolute;
+
+    left: 0;
+    top: 20px;
+
+    width: 420px;
+    height: 90px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #79502e,
+            #3a1e0d
+        );
+
+    border:
+        6px solid #9b6a3b;
+
+    transform-origin:
+        bottom center;
+
+    animation:
+        lidOpen 1.5s ease-out forwards;
+}
+
+@keyframes boxReveal {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            scale(0.5);
+
+        opacity: 0;
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+        opacity: 1;
+    }
+}
+
+@keyframes lidOpen {
+
+    from {
+        transform:
+            rotateX(0deg);
+    }
+
+    to {
+        transform:
+            rotateX(65deg)
+            translateY(-20px);
+    }
+}
+
+
+/* =========================================================
+   LETTER
+   ========================================================= */
+
+.css-letter {
+
+    position: absolute;
+
+    left: 50%;
+    top: 42%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 25;
+
+    animation:
+        letterReveal 1s ease-out both;
+}
+
+.letter-paper {
+
+    width: 500px;
+    height: 650px;
+
+    padding: 90px 70px;
+
+    background:
+        linear-gradient(
+            #f3ead2,
+            #d9c89d
+        );
+
+    color: #21170e;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.6);
+
+    transform:
+        rotate(-2deg);
+}
+
+.letter-line {
+
+    width: 100%;
+
+    height: 3px;
+
+    margin-bottom: 35px;
+
+    background: rgba(0,0,0,0.25);
+}
+
+.letter-line.short {
+    width: 60%;
+}
+
+.letter-name {
+
+    margin-top: 80px;
+
+    font-size: 38px;
+
+    font-weight: 800;
+}
+
+@keyframes letterReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   DOOR
+   ========================================================= */
+
+.css-door {
+
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 20;
+}
+
+.door-frame {
+
+    width: 600px;
+    height: 1000px;
+
+    padding: 30px;
+
+    background: #24150c;
+
+    border:
+        15px solid #4a2c18;
+}
+
+.door-panel {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #39200f,
+            #70452a,
+            #39200f
+        );
+
+    transform-origin:
+        left center;
+
+    animation:
+        doorOpen 1.5s ease-out both;
+}
+
+.door-knob {
+
+    position: absolute;
+
+    right: 60px;
+    top: 50%;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: #d1ad5b;
+}
+
+@keyframes doorOpen {
+
+    from {
+        transform:
+            perspective(800px)
+            rotateY(0deg);
+    }
+
+    to {
+        transform:
+            perspective(800px)
+            rotateY(-35deg);
+    }
+}
+
+
+/* =========================================================
+   SOUND WAVES
+   ========================================================= */
+
+.sound-waves {
+
+    position: absolute;
+
+    left: 50%;
+    top: 45%;
+
+    width: 500px;
+    height: 500px;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 15;
+}
+
+.sound-waves span {
+
+    position: absolute;
+
+    inset: 50%;
+
+    border:
+        5px solid rgba(255,255,255,0.6);
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    animation:
+        soundWave 2s infinite;
+}
+
+.sound-waves span:nth-child(2) {
+    animation-delay: .6s;
+}
+
+.sound-waves span:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+@keyframes soundWave {
+
+    from {
+        width: 50px;
+        height: 50px;
+
+        opacity: 1;
+    }
+
+    to {
+        width: 500px;
+        height: 500px;
+
+        opacity: 0;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div id="video">
+
+    
+            <section
+                class="scene active"
+                id="scene-1"
+                data-scene="1"
+                data-start="0"
+                data-end="5"
+                style="
+                    background:
+                    linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
+                "
+            >
+
+                <div class="scene-elements">
+
+                    
+            <div class="rain">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
+            
+
+                </div>
+
+                <div class="scene-content">
+
+                    <div class="visual-type">
+                        text_flash
+                    </div>
+
+                    
+            <div class="visual-description">
+                flash_text
+            </div>
+            
+
+                    
+
+                    
+            <div
+                class="scene-text effect-flash"
+                data-text="The Last Letter"
+            >
+                The Last Letter
+            </div>
+            
+
+                    
+            <div class="effects-label">
+                rain_splash
+            </div>
+            
+
+                </div>
+
+            </section>
+            
+            <section
+                class="scene"
+                id="scene-2"
+                data-scene="2"
+                data-start="5"
+                data-end="10"
+                style="
+                    background:
+                    linear-gradient(to bottom, #1e1e1e 0%, #0e0e0e 100%);
+                "
+            >
+
+                <div class="scene-elements">
+
+                    
+            <div class="flicker-light"></div>
+            
+
+                </div>
+
+                <div class="scene-content">
+
+                    <div class="visual-type">
+                        typing_effect
+                    </div>
+
+                    
+            <div class="visual-description">
+                typing
+            </div>
+            
+
+                    
+
+                    
+            <div
+                class="scene-text effect-typing"
+                data-text="A house holds more than walls."
+            >
+                A house holds more than walls.
+            </div>
+            
+
+                    
+            <div class="effects-label">
+                flicker_light
+            </div>
+            
+
+                </div>
+
+            </section>
+            
+            <section
+                class="scene"
+                id="scene-3"
+                data-scene="3"
+                data-start="10"
+                data-end="15"
+                style="
+                    background:
+                    linear-gradient(to bottom, #1a1a1a 0%, #0a0a0a 100%);
+                "
+            >
+
+                <div class="scene-elements">
+
+                    
+            <div class="dust">
+                <i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i>
+            </div>
+            
+
+                </div>
+
+                <div class="scene-content">
+
+                    <div class="visual-type">
+                        text_flash
+                    </div>
+
+                    
+            <div class="visual-description">
+                flash_text
+            </div>
+            
+
+                    
+
+                    
+            <div
+                class="scene-text effect-flash"
+                data-text="Some words wait decades to be spoken."
+            >
+                Some words wait decades to be spoken.
+            </div>
+            
+
+                    
+            <div class="effects-label">
+                dust_particles
+            </div>
+            
+
+                </div>
+
+            </section>
+            
+            <section
+                class="scene"
+                id="scene-4"
+                data-scene="4"
+                data-start="15"
+                data-end="20"
+                style="
+                    background:
+                    linear-gradient(to bottom, #1e1e1e 0%, #0e0e0e 100%);
+                "
+            >
+
+                <div class="scene-elements">
+
+                    
+
+                </div>
+
+                <div class="scene-content">
+
+                    <div class="visual-type">
+                        typing_effect
+                    </div>
+
+                    
+            <div class="visual-description">
+                typing
+            </div>
+            
+
+                    
+
+                    
+            <div
+                class="scene-text effect-typing"
+                data-text="For Aarav... when he turns 25."
+            >
+                For Aarav... when he turns 25.
+            </div>
+            
+
+                    
+            <div class="effects-label">
+                paper_texture
+            </div>
+            
+
+                </div>
+
+            </section>
+            
+            <section
+                class="scene"
+                id="scene-5"
+                data-scene="5"
+                data-start="20"
+                data-end="25"
+                style="
+                    background:
+                    linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
+                "
+            >
+
+                <div class="scene-elements">
+
+                    
+            <div class="css-door">
+
+                <div class="door-frame">
+
+                    <div class="door-panel">
+
+                        <div class="door-knob"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            
+
+                </div>
+
+                <div class="scene-content">
+
+                    <div class="visual-type">
+                        text_flash
+                    </div>
+
+                    
+            <div class="visual-description">
+                flash_text
+            </div>
+            
+
+                    
+
+                    
+            <div
+                class="scene-text effect-flash"
+                data-text="Not all letters are meant to be delivered."
+            >
+                Not all letters are meant to be delivered.
+            </div>
+            
+
+                    
+            <div class="effects-label">
+                door_open
+            </div>
+            
+
+                </div>
+
+            </section>
+            
+            <section
+                class="scene"
+                id="scene-6"
+                data-scene="6"
+                data-start="25"
+                data-end="30"
+                style="
+                    background:
+                    linear-gradient(to bottom, #1a1a1a 0%, #0a0a0a 100%);
+                "
+            >
+
+                <div class="scene-elements">
+
+                    
+            <div class="rain">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
+            
+
+                </div>
+
+                <div class="scene-content">
+
+                    <div class="visual-type">
+                        typing_effect
+                    </div>
+
+                    
+            <div class="visual-description">
+                typing
+            </div>
+            
+
+                    
+
+                    
+            <div
+                class="scene-text effect-typing"
+                data-text="What remains unsaid often lasts forever."
+            >
+                What remains unsaid often lasts forever.
+            </div>
+            
+
+                    
+            <div class="effects-label">
+                rain_splash
+            </div>
+            
+
+                </div>
+
+            </section>
+            
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   VIDEO CONFIG
+   ========================================================= */
+
+window.VIDEO_CONFIG = {
+
+    width: 1080,
+
+    height: 1920,
+
+    fps: 30,
+
+    duration: 30,
+
+    scenes: [
+
+        
+            {
+                "id": 1,
+                "start": 0,
+                "end": 5,
+                "duration": 5
+            }
+            ,
+            {
+                "id": 2,
+                "start": 5,
+                "end": 10,
+                "duration": 5
+            }
+            ,
+            {
+                "id": 3,
+                "start": 10,
+                "end": 15,
+                "duration": 5
+            }
+            ,
+            {
+                "id": 4,
+                "start": 15,
+                "end": 20,
+                "duration": 5
+            }
+            ,
+            {
+                "id": 5,
+                "start": 20,
+                "end": 25,
+                "duration": 5
+            }
+            ,
+            {
+                "id": 6,
+                "start": 25,
+                "end": 30,
+                "duration": 5
+            }
+            
+
+    ]
+
+};
+
+
+/* =========================================================
+   SET VIDEO TIME
+   ========================================================= */
+
+window.setVideoTime = function(time) {
+
+    const scenes =
+        document.querySelectorAll(".scene");
+
+    scenes.forEach(function(scene) {
+
+        const start =
+            Number(scene.dataset.start);
+
+        const end =
+            Number(scene.dataset.end);
+
+        if (
+            time >= start &&
+            time < end
+        ) {
+
+            scene.classList.add("active");
+
+        } else {
+
+            scene.classList.remove("active");
+
+        }
+
+    });
+
+};
+
+
+/* =========================================================
+   INITIAL FRAME
+   ========================================================= */
+
+window.setVideoTime(0);
+
+window.VIDEO_READY = true;
+
+</script>
+
+</body>
+
+</html>

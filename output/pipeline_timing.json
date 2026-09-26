@@ -1,0 +1,12 @@
+{
+    "pipeline": {
+        "status": "failed",
+        "total_duration_seconds": 680.75
+    },
+    "stages": {
+        "AI Agent Pipeline": {
+            "duration_seconds": 459.283,
+            "status": "success"
+        }
+    }
+}
